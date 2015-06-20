@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<!-- Copyright (c) 2012 Design Science, Inc. -->
+<head>
+<title>Neke jednadžbe Računalne Grafike</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+   <script src="http://aleph.sagemath.org/static/jquery.min.js"></script>
+    <script src="http://aleph.sagemath.org/embedded_sagecell.js"></script>
+    <script>
+$(function () {
+    sagecell.makeSagecell({inputLocation:  '#mycell',
+                           template:       sagecell.templates.minimal,
+                           evalButtonText: 'Aktiviraj'});
+    sagecell.makeSagecell({inputLocation: '#mycell2',
+                           evalButtonText: 'Izracunaj'});
+});
+    </script>
+
+<!-- This script tag is needed to make calibre's ebook-viewer recpgnize that this file needs math typesetting -->
+
+ <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<style>
+h1 {text-align:center}
+h2 {
+  font-weight: bold;
+  background-color: #DAAAAA;
+  padding: .2em .5em;
+  margin-top: 1.5em;
+  border-top: 3px solid #666666;
+  border-bottom: 2px solid #999999;
+}
+</style>
+</head>
+<body>
+<h1>RAČUNALNA GRAFIKA (MathJax)</h1>
+<h1>Transformacije</h1>
+
+<h2>Linearne transformacije</h2>
+<a><center>Translacija</center></a>
+<a><center>Rotacija</center></a>
+<a><center>Skaliranje</center></a>
+
+
+
+
+
+<h2>Afine transformacije</h2>
+
+<p>
+\begin{align}
+A(x) = B(x) + u
+\end{align}
+</p>
+
+<h1>Homogene koordinate</h1>
+
+
+
+<h2>Translacija u homogenim koordinatama</h2>
+
+<p>\[\begin{bmatrix}x' & y' & 1\end{bmatrix}=\begin{bmatrix}0 & 0 & d_{x}\\0 & 0& d_{y}\\ 0&0&1\end{bmatrix}\cdot \begin{bmatrix}x & y & 1\end{bmatrix}\tag{1}\]</p>
+<p>\[P' = T(d_{x}, d_{y})\cdot P\tag{2}\]</p>
+<p>\[T(d_{x}, d_{y})=\begin{bmatrix}0 & 0 & d_{x}\\0 & 0& d_{y}\\ 0&0&1\end{bmatrix}\tag{3}\]</p>
+
+<p>\[P' = T(d_{x1}, d_{y1})\cdot P\tag{4}\]
+\[P'' = T(d_{x2}, d_{y2})\cdot P'\tag{5}\]
+</p>
+<p>\[P' = T(d_{x1}, d_{y1})\cdot T(d_{x2}, d_{y2}) \cdot P\tag{6}\]</p>
+<h2>Skaliranje u homogenim koordinatama</h2>
+
+<p>\[\begin{bmatrix}x' & y' & 1\end{bmatrix}=\begin{bmatrix}s_{x} & 0 & 0\\0 & s_{y}& 0 \\ 0&0&1\end{bmatrix}\cdot \begin{bmatrix}x & y & 1\end{bmatrix}\tag{7}\]</p>
+<p>\[P' = S(s_{x1}, s_{y1})\cdot P\tag{8}\] ,gdje je \[S(s_{x1}, s_{y1}) = \begin{bmatrix}s_{x} & 0 & 0\\0 & s_{y}& 0 \\ 0&0&1\end{bmatrix}\tag{9}\] </p>
+<p>\[P' = S(s_{x1}, s_{y1})\cdot P\tag{10}\]
+\[P'' = S(s_{x2}, s_{y2})\cdot P'\tag{11}\]
+</p>
+<p>\[P' = S(s_{x1}, s_{y1})\cdot S(s_{x2}, s_{y2}) \cdot P\tag{12}\]</p>
+<h2>Rotacija u homogenim koordinatama</h2>
+
+<p>\[\begin{bmatrix}x' & y' & 1\end{bmatrix}=\begin{bmatrix}\cos\theta & -\sin\theta & 0\\ \sin\theta & \cos\theta& 0\\ 0&0&1\end{bmatrix}\cdot \begin{bmatrix}x & y & 1\end{bmatrix}\tag{13}\]</p>
+<p>\[P' = R(\theta)\cdot P\tag{14}\], gdje je \[R(\theta)= \begin{bmatrix}\cos\theta & -\sin\theta & 0\\ \sin\theta & \cos\theta& 0\\ 0&0&1\end{bmatrix}\tag{15}\]</p>
+
+
+<p>\[P' = R(\theta_{1})\cdot P\tag{16}\]
+\[P'' = R(\theta_{2})\cdot P'\tag{17}\]
+</p>
+<p>\[P'' = R(\theta_{2})\cdot R(\theta_{1}) \cdot P\tag{18}\]</p>
+<p>
+\begin{align}
+ 
+\end{align}
+</p>
+
+\begin{equation}
+ 
+\end{equation}
+<h2>Jednadžbe drugih područja....</h2>
+<center><h3> Cauchy-Schwarz Nejednakost</h3></center>
+<a><center>\[\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)\tag{1}\]</center></a>
+<center><h3>Lorenz<h3></center>
+<a><center>\[\begin{aligned}
+\dot{x} & = \sigma(y-x) \\
+\dot{y} & = \rho x - y - xz \\
+\dot{z} & = -\beta z + xy
+\end{aligned}\tag{2}\]</a></center>
+<center><h3>Vektorski produkt</h3></center>
+<a><center>\[\mathbf{V}_1 \times \mathbf{V}_2 =  \begin{vmatrix}
+\mathbf{i} & \mathbf{j} & \mathbf{k} \\
+\frac{\partial X}{\partial u} &  \frac{\partial Y}{\partial u} & 0 \\
+\frac{\partial X}{\partial v} &  \frac{\partial Y}{\partial v} & 0
+\end{vmatrix}\tag{3}\]</center></a>
+<center><h3>Maxwell jednadžbe</h3></center>
+<a><center>\[\begin{aligned}
+\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} & = \frac{4\pi}{c}\vec{\mathbf{j}} \\   \nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
+\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
+\nabla \cdot \vec{\mathbf{B}} & = 0 \end{aligned}\tag{4}\]</a></center>
+<center><h3>Vjerojatnost dobivanja <i>k</i> glava u bacanju <i>n</i> novčića</h3></center>
+<a><center>\[P(E)   = {n \choose k} p^k (1-p)^{ n-k}\tag{5}\]<center></a>
+<h2>SAGE CELL</h2>
+
+Klikni "Aktiviraj" gumb ispod za izračunat faktorijele.
+<div id="mycell"><script type="text/x-sage">
+@interact
+def _(a=(1, 10)):
+    print factorial(a)
+</script>
+</div> 
+
+
+Klikni "Aktiviraj" gumb ispod za izračunat:
+<div id="mycell3"><script type="text/x-sage">
+@interact
+def f(n=(0,10)):
+    print 2^n
+</script></div>
+<script>
+$(function () {
+    sagecell.makeSagecell({inputLocation: '#mycell3',evalButtonText: 'Izracunaj'});
+});
+</script> 
+
+
+
+Unesi svoj Sage kod i klikni  &ldquo;Izračunaj:&rdquo;.
+<div id="mycell2"><script type="text/x-sage">plot(sin(x), (x, 0, 2*pi))</script></div>
+
+<div id="mycell4"><script type="text/x-sage">import scipy.fftpack as Fourier
+@interact
+def discrete_fourier(f = input_box(default=sum([sin(k*x) for k in range(1,5,2)])), scale = slider(.1,20,.1,5)):
+    pbegin = -float(pi)*scale
+    pend = float(pi)*scale
+    html("<h3>Graf i diskretna Furierova transformacija</h3>")
+    show(plot(f, (x,pbegin, pend), plot_points = 512), figsize = [4,3])
+    f_vals = [f(x=ind) for ind in srange(pbegin, pend,(pend-pbegin)/512.0)]
+    my_fft = Fourier.fft(f_vals)
+    show(list_plot([abs(i) for i in my_fft], plotjoined=True), figsize = [4,3])</script></div>
+<script>
+$(function () {
+    sagecell.makeSagecell({inputLocation: '#mycell4'});
+});
+</script> 
+
+<div id="mycell5"><script type="text/x-sage">srg = srange(-4,4,1/10,include_endpoint=True)
+@interact
+def dualv(a1=slider(srg,default=1),a2=slider(srg,default=2), a3=slider(srg,default=-1),a4=slider(srg,default=3)):
+    A1 = arrow2d([0,0],[a1,a2],rgbcolor='black')
+    A2 = arrow2d([0,0],[a3,a4],rgbcolor='black')
+    A3 = arrow2d([0,0],[a1,a3],rgbcolor='black')
+    A4 = arrow2d([0,0],[a2,a4],rgbcolor='black')
+    p1 = polygon([[0,0],[a1,a2],[a1+a3,a2+a4],[a3,a4],[0,0]], alpha=.5)
+    p2 = polygon([[0,0],[a1,a3],[a1+a2,a3+a4],[a2,a4],[0,0]],rgbcolor='red', alpha=.5)
+    A = matrix([[a1,a2],[a3,a4]])
+    html('<h3>Determinanta matrice jednaka je determinanti transponirane</h3>')
+    html("$det(%s) = det(%s)$"%(latex(A),latex(A.transpose())))
+    show(A1+A2+A3+A4+p1+p2)</script></div>
+<script>
+$(function () {
+    sagecell.makeSagecell({inputLocation: '#mycell5'});
+});
+</script>
+
+</script> 
+<div id="mycell6"><script type="text/x-sage">
+@interact
+def myplot(f=x^2):
+     show(plot(f,(x,-3,3)))
+
+</script></div>
+<script>
+$(function () {
+    sagecell.makeSagecell({inputLocation: '#mycell6'});
+});</script>
+
+<div id="mycell7"><script type="text/x-sage">
+@interact
+html("<h3>Interaktivno računanje</h3>")
+@interact
+def f1(year=slider(1900,2100,1)):
+  k1 = year
+  k2 = factor(year)
+  print "%s = %s" % (k1, k2)
+
+html("<h3>Graf</h3>")
+var('x')
+plot(sin(x)/(2+cos(pi*x)), (-2*pi, 3*pi)).show()
+</script></div>
+<script>
+$(function () {
+    sagecell.makeSagecell({inputLocation: '#mycell7'});
+});</script>
+<script>
+$(function () {
+    sagecell.makeSagecell({inputLocation: '#mycell7'});
+});
+
+</script></div>
+<div id="mycell8"><script type="text/x-sage">
+
+
+plot(x^2, (x,0,5))
+</script></div>
+
+<script>
+$(function () {
+    sagecell.makeSagecell({inputLocation: '#mycell8'});
+});</script>
+
+<div id="mycell9"><script type="text/x-sage">
+circle((1,1), 1) + plot(x^2, (x,0,5))
+</script></div>
+
+<script>
+$(function () {
+    sagecell.makeSagecell({inputLocation: '#mycell9'});
+});</script>
+
+<div id="mycell10"><script type="text/x-sage">
+plot(cos(x), (x, -5, 5), thickness=5, color='green', title='A plot')
+polygon([[1,2], [5,6], [5,0]], color='red')
+
+</script></div>
+
+<script>
+$(function () {
+    sagecell.makeSagecell({inputLocation: '#mycell10'});
+});</script>
+
+<h1>SAGE CODE: Sage Funkcije</h1>
+
+<a><b>sage:</b>f1(x) = -1<br>
+<b>sage:</b>f1(x) = -1<br>
+<b>sage:</b>f2(x) = 2<br>
+<b>sage:</b>f = Piecewise([[(0,pi/2),f1],[(pi/2,pi),f2]])</br>
+<b>sage:</b>f(1)</a></br>
+<br>
+<a><b>sage:</b>is_prime(389)</a></br>
+<br>
+<a><b>sage:</b>divmod(14,4)</a></br>
+<br>
+<a><b>sage:</b>24.prime_divisors()</a></br>
+<br>
+<a><b>sage:</b>data = [  floor(tan( pi* random() - pi/2.1 )) for i in [ 1 .. 20 ] ]</br>
+<b>sage:</b>data</br>
+<b>sage:</b>mean(data)</br>
+<b>sage:</b>median(data)</br>
+<b>sage:</b>mode(data)</br>
+<b>sage:</b>variance(data)</br>
+<b>sage:</b>moving_average(data,4)</a></br>
+<br>
+<a><b>sage:</b>x = PolynomialRing(QQ,'x').gen()</a></br>
+<a><b>sage:</b>f = Piecewise([[(0,1),1*x^0]])</a></br>
+<a><b>sage:</b>g = f.convolution(f)</a></br>
+<a><b>sage:</b>h = f.convolution(g)</a></br>
+
+</body>
+</html>
